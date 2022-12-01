@@ -63,4 +63,19 @@ public class AddressBook implements AddressBookInterface {
             }
         }
     }
+
+    @Override
+    public void deleteContactDetails() {
+        System.out.print("Enter first name : ");
+        String firstName = input.next();
+        for (ContactDetails details : listOfContacts) {
+            if (details.getFirstName().equals(firstName)) {
+                listOfContacts.remove(details);
+                System.out.println("Delete " + firstName + " contact details");
+                break;
+            } else {
+                System.out.println(firstName + " not found");
+            }
+        }
+    }
 }

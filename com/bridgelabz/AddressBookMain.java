@@ -15,7 +15,7 @@ public class AddressBookMain {
         do {
             System.out.println("Welcome to Address Book");
             Scanner input = new Scanner(System.in);
-            System.out.println("1.Add contact details  2.print contact details  3.Edit contact details");
+            System.out.println("1.Add contact details  2.print contact details  3.Edit contact details  4.Delete contact details");
             System.out.print("Select a option : ");
             option = input.nextInt();
             switch (option) {
@@ -28,6 +28,9 @@ public class AddressBookMain {
                     break;
                 case 3:
                     book.editContactDetails();
+                    break;
+                case 4:
+                    book.deleteContactDetails();
                     break;
                 default:
                     System.out.println("Enter valid details");
