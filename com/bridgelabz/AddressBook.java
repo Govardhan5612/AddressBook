@@ -14,6 +14,7 @@ public class AddressBook implements AddressBookInterface {
     Scanner input = new Scanner(System.in);
     ContactDetails details = new ContactDetails();
     List<ContactDetails> listOfContacts = new ArrayList<>();
+
     @Override
     public void addContactDetails() {
         /**
@@ -35,7 +36,8 @@ public class AddressBook implements AddressBookInterface {
         details.setPhoneNumber(input.next());
         System.out.print("Enter the email : ");
         details.setEmail(input.next());
-        listOfContacts.add(details);
+        ContactDetails contact1 = new ContactDetails(details.getFirstName(), details.getLastName(), details.getAddress(), details.getCity(), details.getState(), details.getEmail(), details.getPhoneNumber(), details.getZip());
+        listOfContacts.add(contact1);
     }
 
     @Override
@@ -44,5 +46,21 @@ public class AddressBook implements AddressBookInterface {
          * print the contact details
          */
         System.out.println(listOfContacts);
+    }
+
+    @Override
+    public void editContactDetails() {
+        System.out.print("Enter first name : ");
+        String firstName = input.next();
+        for (ContactDetails contact : listOfContacts) {
+            if (contact.getFirstName().equals(firstName)) {
+                listOfContacts.remove(contact);
+                System.out.println("edit the " + firstName + " contact details");
+                addContactDetails();
+                break;
+            } else {
+                System.out.println("Contact details not found");
+            }
+        }
     }
 }

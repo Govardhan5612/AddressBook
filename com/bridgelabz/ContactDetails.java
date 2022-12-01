@@ -54,7 +54,7 @@ public class ContactDetails {
     }
 
     public void setZip(String zip) {
-        if (zip.length()==6) {
+        if (zip.length() == 6) {
             this.zip = zip;
         }
     }
@@ -64,7 +64,7 @@ public class ContactDetails {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if (phoneNumber.length()==10) {
+        if (phoneNumber.length() == 10) {
             this.phoneNumber = phoneNumber;
         }
     }
@@ -77,8 +77,21 @@ public class ContactDetails {
         this.email = email;
     }
 
+    public ContactDetails(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+    }
+
+    public ContactDetails() {
+    }
+
     /**
-     *
      * @return string values
      */
     @Override
