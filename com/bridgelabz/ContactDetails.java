@@ -1,7 +1,7 @@
 package com.bridgelabz;
 
 /**
- * @ Govardhan Reddy
+ * @author Govardhan Reddy
  */
 public class ContactDetails {
     /**
@@ -54,7 +54,9 @@ public class ContactDetails {
     }
 
     public void setZip(String zip) {
-        this.zip = zip;
+        if (zip.length()==6) {
+            this.zip = zip;
+        }
     }
 
     public String getPhoneNumber() {
@@ -62,7 +64,9 @@ public class ContactDetails {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
+        if (phoneNumber.length()==10) {
+            this.phoneNumber = phoneNumber;
+        }
     }
 
     public String getEmail() {
