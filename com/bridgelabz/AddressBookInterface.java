@@ -13,4 +13,6 @@ public interface AddressBookInterface {
     void printContactDetails();
 
     void editContactDetails();
+
+    void deleteContactDetails();
 }
