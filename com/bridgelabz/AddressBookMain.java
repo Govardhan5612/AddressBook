@@ -20,8 +20,12 @@ public class AddressBookMain {
             option = input.nextInt();
             switch (option) {
                 case 1:
-                    System.out.println("Enter the contact details : ");
-                    book.addContactDetails();
+                    System.out.print("Enter how many employee details add : ");
+                    int number = input.nextInt();
+                    for (int i = 1; i <= number; i++) {
+                        System.out.println("Enter " + i + " contact details : ");
+                        book.addContactDetails();
+                    }
                     break;
                 case 2:
                     book.printContactDetails();
