@@ -1,7 +1,6 @@
 package com.bridgelabz;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -13,7 +12,7 @@ public class AddressBook implements AddressBookInterface {
      */
     Scanner input = new Scanner(System.in);
     ContactDetails details = new ContactDetails();
-    List<ContactDetails> listOfContacts = new ArrayList<>();
+    ArrayList<ContactDetails> listOfContacts = new ArrayList<>();
 
     @Override
     public void addContactDetails() {
@@ -36,7 +35,7 @@ public class AddressBook implements AddressBookInterface {
         details.setPhoneNumber(input.next());
         System.out.print("Enter the email : ");
         details.setEmail(input.next());
-        ContactDetails contact1 = new ContactDetails(details.getFirstName(), details.getLastName(), details.getAddress(), details.getCity(), details.getState(), details.getEmail(), details.getPhoneNumber(), details.getZip());
+        ContactDetails contact1 = new ContactDetails(details.getFirstName(), details.getLastName(), details.getAddress(), details.getCity(), details.getState(), details.getPhoneNumber(), details.getZip(), details.getEmail());
         listOfContacts.add(contact1);
     }
 
@@ -52,30 +51,40 @@ public class AddressBook implements AddressBookInterface {
     public void editContactDetails() {
         System.out.print("Enter first name : ");
         String firstName = input.next();
-        for (ContactDetails contact : listOfContacts) {
-            if (contact.getFirstName().equals(firstName)) {
-                listOfContacts.remove(contact);
-                System.out.println("edit the " + firstName + " contact details");
-                addContactDetails();
+        int number = 0;
+        for (ContactDetails details : listOfContacts) {
+            if (details.getFirstName().equals(firstName)) {
+                listOfContacts.remove(details);
+                number =1;
                 break;
-            } else {
-                System.out.println("Contact details not found");
             }
         }
+        if (number== 0) {
+            System.out.println(firstName + " Contact list not found");
+        } else {
+            addContactDetails();
+            System.out.println("Edit " + firstName + " contact details");
+        }
     }
+
 
     @Override
     public void deleteContactDetails() {
         System.out.print("Enter first name : ");
         String firstName = input.next();
+        int number = 0;
         for (ContactDetails details : listOfContacts) {
             if (details.getFirstName().equals(firstName)) {
                 listOfContacts.remove(details);
-                System.out.println("Delete " + firstName + " contact details");
+                number=1;
                 break;
-            } else {
-                System.out.println(firstName + " not found");
             }
         }
+        if (number ==0) {
+            System.out.println(firstName + " Contact list not found");
+        } else {
+            System.out.println("Delete " + firstName + " contact details");
+        }
+
     }
 }
