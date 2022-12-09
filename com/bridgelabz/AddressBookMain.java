@@ -1,6 +1,6 @@
 package com.bridgelabz;
 
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * @author Govardhan Reddy
@@ -9,7 +9,7 @@ public class AddressBookMain {
     /**
      * Ability to manage the contact details
      */
-    public void manageContactDetails() {
+    public ArrayList manageContactDetails() {
         AddressBook book = new AddressBook();
         int option;
         do {
@@ -44,11 +44,25 @@ public class AddressBookMain {
             System.out.print("Enter the choice : ");
             option = input.nextInt();
 
-        } while (option != 2);
+        } while (option == 1);
+        return book.listOfContacts;
     }
 
     public static void main(String[] args) {
         AddressBookMain main = new AddressBookMain();
-        main.manageContactDetails();
+        Hashtable<String, List<ContactDetails>> bookMap = new Hashtable<>();
+        Scanner input = new Scanner(System.in);
+        System.out.print("Enter address book numbers : ");
+        int number = input.nextInt();
+        for (int i = 1; i <= number; i++) {
+            System.out.print("Enter book name : ");
+            String bookName = input.next();
+            bookMap.put(bookName, main.manageContactDetails());
+
+        }
+        System.out.println(bookMap);
+
     }
+
+
 }
