@@ -9,7 +9,7 @@ public class AddressBookMain {
     /**
      * Ability to manage the contact details
      */
-    public ArrayList manageContactDetails() {
+    public List manageContactDetails() {
         AddressBook book = new AddressBook();
         int option;
         do {
