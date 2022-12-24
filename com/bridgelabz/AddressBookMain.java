@@ -48,21 +48,4 @@ public class AddressBookMain {
         return book.listOfContacts;
     }
 
-    public static void main(String[] args) {
-        AddressBookMain main = new AddressBookMain();
-        Hashtable<String, List<ContactDetails>> bookMap = new Hashtable<>();
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter address book numbers : ");
-        int number = input.nextInt();
-        for (int i = 1; i <= number; i++) {
-            System.out.print("Enter book name : ");
-            String bookName = input.next();
-            bookMap.put(bookName, main.manageContactDetails());
-
-        }
-        System.out.println(bookMap);
-
-    }
-
-
 }
