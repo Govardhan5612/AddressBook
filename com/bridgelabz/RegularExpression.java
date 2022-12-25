@@ -30,7 +30,7 @@ public class RegularExpression {
             System.out.println(lastName + " is valid last name");
         } else {
             System.out.println(lastName + " is not valid last name");
-            validFirstName();
+            validLastName();
         }
         return lastName;
     }
@@ -43,7 +43,7 @@ public class RegularExpression {
             System.out.println(address + " is valid address");
         } else {
             System.out.println(address + " is not valid address");
-            validFirstName();
+            validAddress();
         }
         return address;
     }
@@ -56,7 +56,7 @@ public class RegularExpression {
             System.out.println(city + " is valid city");
         } else {
             System.out.println(city + " is not valid city");
-            validFirstName();
+            validCity();
         }
         return city;
     }
@@ -69,7 +69,7 @@ public class RegularExpression {
             System.out.println(state + " is valid state");
         } else {
             System.out.println(state + " is not valid state");
-            validFirstName();
+            validState();
         }
         return state;
     }
@@ -82,7 +82,7 @@ public class RegularExpression {
             System.out.println(zip + " is valid zip");
         } else {
             System.out.println(zip + " is not valid zip");
-            validFirstName();
+            validZip();
         }
         return zip;
     }
@@ -95,7 +95,7 @@ public class RegularExpression {
             System.out.println(mobileNumber + " is valid mobile number");
         } else {
             System.out.println(mobileNumber + " is not valid mobile number");
-            validFirstName();
+            validMobileNumber();
         }
         return mobileNumber;
     }
@@ -108,7 +108,7 @@ public class RegularExpression {
             System.out.println(email + " is valid email");
         } else {
             System.out.println(email + " is not valid email");
-            validFirstName();
+            valid_email();
         }
         return email;
     }
