@@ -41,11 +41,13 @@ public class AddressBooks {
         System.out.println("1.Search in city");
         System.out.println("2.Search in state");
         System.out.println("3.Search person");
-        System.out.println("4.Exit");
+        System.out.println("4.Number of persons in city");
+        System.out.println("5.Number of persons in state");
+        System.out.println("6.Exit");
         System.out.println();
         System.out.print("Enter option : ");
         int option = input.nextInt();
-        while (option != 4) {
+        while (option != 6) {
             switch (option) {
                 case 1:
                     System.out.print("Enter city name : ");
@@ -71,6 +73,26 @@ public class AddressBooks {
                         list.stream().filter(name -> name.getFirstName().equalsIgnoreCase(firstName)).forEach(x -> System.out.println(x));
                     }
                     break;
+                case 4:
+                    System.out.print("Enter city name : ");
+                    String cityPersons = input.next();
+                    List<ContactDetails> listSizeInCity = new ArrayList<>();
+                    for (List contact : books.values()) {
+                        List<ContactDetails> list = contact;
+                        list.stream().filter(city -> city.getCity().equalsIgnoreCase(cityPersons)).forEach(x ->listSizeInCity.add(x) );
+                    }
+                    System.out.println("Number of persons in city : " + listSizeInCity.size());
+                    break;
+                case 5:
+                    System.out.print("Enter state name : ");
+                    String statePersons = input.next();
+                    List<ContactDetails> listSizeInState = new ArrayList<>();
+                    for (List contact : books.values()) {
+                        List<ContactDetails> list = contact;
+                        list.stream().filter(state -> state.getState().equalsIgnoreCase(statePersons)).forEach(x -> listSizeInState.add(x));
+                    }
+                    System.out.println("Number of persons in state : " + listSizeInState.size());
+                    break;
                 default:
                     System.out.println("Enter correct value");
 
@@ -78,7 +100,9 @@ public class AddressBooks {
             System.out.println("1.Search in city");
             System.out.println("2.Search in state");
             System.out.println("3.Search person");
-            System.out.println("4.Exit");
+            System.out.println("4.Number of persons in city");
+            System.out.println("5.Number of persons in state");
+            System.out.println("6.Exit");
             System.out.print("Enter option : ");
             option = input.nextInt();
         }
