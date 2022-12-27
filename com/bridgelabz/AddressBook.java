@@ -19,7 +19,9 @@ public class AddressBook implements AddressBookInterface {
     @Override
     public void addContactDetails() {
         /**
-         * Enter the contact details using Scanner object
+         * add user details to particular address book
+         * use regular expression class method take inputs from console
+         * this method take unique first name
          */
         String firstName = regex.validFirstName();
         boolean status = false;
@@ -50,7 +52,7 @@ public class AddressBook implements AddressBookInterface {
     @Override
     public void printContactDetails() {
         /**
-         * print the contact details
+         * this method is used to print all user details of particular address book
          */
         for (ContactDetails contact : listOfContacts) {
             System.out.println(contact.toString());
@@ -59,6 +61,9 @@ public class AddressBook implements AddressBookInterface {
 
     @Override
     public void editContactDetails() {
+        /**
+         * this method is used to edit particular user detail use their first name
+         */
         System.out.print("Enter first name : ");
         String firstName = input.next();
         int number = 0;
@@ -79,6 +84,9 @@ public class AddressBook implements AddressBookInterface {
 
     @Override
     public void deleteContactDetails() {
+        /**
+         * this method is used to delete particular user detail use their first name
+         */
         System.out.print("Enter first name : ");
         String firstName = input.next();
         int number = 0;
