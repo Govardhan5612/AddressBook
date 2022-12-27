@@ -1,6 +1,7 @@
 package com.bridgelabz;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author Govardhan Reddy
@@ -15,7 +16,7 @@ public class AddressBooks {
 
     public void addressBooksAdd() {
         /**
-         * To store unique person first name details
+         * In this method store multi address books with unique name
          */
         int number = 1;
         while (number == 1) {
@@ -38,16 +39,23 @@ public class AddressBooks {
             }
         }
         System.out.println(books);
+    }
+
+    public void searchAddressBooksDetails() {
+        /**
+         * this method used to search the user details use java streams
+         */
         System.out.println("1.Search in city");
         System.out.println("2.Search in state");
         System.out.println("3.Search person");
         System.out.println("4.Number of persons in city");
         System.out.println("5.Number of persons in state");
-        System.out.println("6.Exit");
+        System.out.println("6.Sort the contact list use firstname");
+        System.out.println("7.Exit");
         System.out.println();
         System.out.print("Enter option : ");
         int option = input.nextInt();
-        while (option != 6) {
+        while (option != 7) {
             switch (option) {
                 case 1:
                     System.out.print("Enter city name : ");
@@ -79,7 +87,7 @@ public class AddressBooks {
                     List<ContactDetails> listSizeInCity = new ArrayList<>();
                     for (List contact : books.values()) {
                         List<ContactDetails> list = contact;
-                        list.stream().filter(city -> city.getCity().equalsIgnoreCase(cityPersons)).forEach(x ->listSizeInCity.add(x) );
+                        list.stream().filter(city -> city.getCity().equalsIgnoreCase(cityPersons)).forEach(x -> listSizeInCity.add(x));
                     }
                     System.out.println("Number of persons in city : " + listSizeInCity.size());
                     break;
@@ -93,6 +101,15 @@ public class AddressBooks {
                     }
                     System.out.println("Number of persons in state : " + listSizeInState.size());
                     break;
+                case 6:
+                    List<ContactDetails> contactList = new ArrayList<>();
+                    for (List contact : books.values()) {
+                        List<ContactDetails> list = contact;
+                        list.stream().forEach(x -> contactList.add(x));
+                    }
+                    List<ContactDetails> sortedList = contactList.stream().sorted(Comparator.comparing(ContactDetails::getFirstName)).collect(Collectors.toList());
+                    System.out.println(sortedList);
+                    break;
                 default:
                     System.out.println("Enter correct value");
 
@@ -102,7 +119,8 @@ public class AddressBooks {
             System.out.println("3.Search person");
             System.out.println("4.Number of persons in city");
             System.out.println("5.Number of persons in state");
-            System.out.println("6.Exit");
+            System.out.println("6.Sort the contact list use firstname");
+            System.out.println("7.Exit");
             System.out.print("Enter option : ");
             option = input.nextInt();
         }
@@ -111,6 +129,7 @@ public class AddressBooks {
     public static void main(String[] args) {
         AddressBooks books = new AddressBooks();
         books.addressBooksAdd();
+        books.searchAddressBooksDetails();
     }
 
 

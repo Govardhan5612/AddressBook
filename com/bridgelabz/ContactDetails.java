@@ -77,6 +77,9 @@ public class ContactDetails {
         this.email = email;
     }
 
+    /**
+     * create parameterized constructor
+     */
     public ContactDetails(String firstName, String lastName, String address, String city, String state, String zip, String phoneNumber, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -88,6 +91,9 @@ public class ContactDetails {
         this.email = email;
     }
 
+    /**
+     * create default constructor
+     */
     public ContactDetails() {
     }
 
