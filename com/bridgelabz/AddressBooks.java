@@ -51,11 +51,12 @@ public class AddressBooks {
         System.out.println("4.Number of persons in city");
         System.out.println("5.Number of persons in state");
         System.out.println("6.Sort the contact list use firstname");
-        System.out.println("7.Exit");
+        System.out.println("7.Sort contact details by city, state and zip code");
+        System.out.println("8.Exit");
         System.out.println();
         System.out.print("Enter option : ");
         int option = input.nextInt();
-        while (option != 7) {
+        while (option != 8) {
             switch (option) {
                 case 1:
                     System.out.print("Enter city name : ");
@@ -110,6 +111,22 @@ public class AddressBooks {
                     List<ContactDetails> sortedList = contactList.stream().sorted(Comparator.comparing(ContactDetails::getFirstName)).collect(Collectors.toList());
                     System.out.println(sortedList);
                     break;
+                case 7:
+                    List<ContactDetails> stateCityZipList = new ArrayList<>();
+                    for (List contact : books.values()) {
+                        List<ContactDetails> list = contact;
+                        list.stream().forEach(x -> stateCityZipList.add(x));
+                    }
+                    System.out.println("Sorted order by state : ");
+                    List<ContactDetails> stateList = stateCityZipList.stream().sorted(Comparator.comparing(ContactDetails::getState)).collect(Collectors.toList());
+                    System.out.println(stateList);
+                    System.out.println("Sorted order by city : ");
+                    List<ContactDetails> cityList = stateCityZipList.stream().sorted(Comparator.comparing(ContactDetails::getCity)).collect(Collectors.toList());
+                    System.out.println(cityList);
+                    System.out.println("Sorted order by zip code : ");
+                    List<ContactDetails> zipList = stateCityZipList.stream().sorted(Comparator.comparing(ContactDetails::getZip)).collect(Collectors.toList());
+                    System.out.println(zipList);
+                    break;
                 default:
                     System.out.println("Enter correct value");
 
@@ -120,7 +137,8 @@ public class AddressBooks {
             System.out.println("4.Number of persons in city");
             System.out.println("5.Number of persons in state");
             System.out.println("6.Sort the contact list use firstname");
-            System.out.println("7.Exit");
+            System.out.println("7.Sort contact details by city, state and zip code");
+            System.out.println("8.Exit");
             System.out.print("Enter option : ");
             option = input.nextInt();
         }
