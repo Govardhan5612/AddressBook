@@ -1,5 +1,6 @@
 package com.bridgelabz;
 
+import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -59,7 +60,7 @@ public class AddressBooks {
         while (option != 8) {
             switch (option) {
                 case 1:
-                    System.out.print("Enter city name : ");
+                    System.out.print("Enter city name : ");//8
                     String cityName = input.next();
                     for (List contact : books.values()) {
                         List<ContactDetails> list = contact;
@@ -67,7 +68,7 @@ public class AddressBooks {
                     }
                     break;
                 case 2:
-                    System.out.print("Enter State name : ");
+                    System.out.print("Enter State name : ");//8
                     String stateName = input.next();
                     for (List contact : books.values()) {
                         List<ContactDetails> list = contact;
@@ -75,7 +76,7 @@ public class AddressBooks {
                     }
                     break;
                 case 3:
-                    System.out.print("Enter person first name : ");
+                    System.out.print("Enter person first name : ");//9
                     String firstName = input.next();
                     for (List contact : books.values()) {
                         List<ContactDetails> list = contact;
@@ -83,7 +84,7 @@ public class AddressBooks {
                     }
                     break;
                 case 4:
-                    System.out.print("Enter city name : ");
+                    System.out.print("Enter city name : ");//10
                     String cityPersons = input.next();
                     List<ContactDetails> listSizeInCity = new ArrayList<>();
                     for (List contact : books.values()) {
@@ -93,7 +94,7 @@ public class AddressBooks {
                     System.out.println("Number of persons in city : " + listSizeInCity.size());
                     break;
                 case 5:
-                    System.out.print("Enter state name : ");
+                    System.out.print("Enter state name : ");///10
                     String statePersons = input.next();
                     List<ContactDetails> listSizeInState = new ArrayList<>();
                     for (List contact : books.values()) {
@@ -108,8 +109,8 @@ public class AddressBooks {
                         List<ContactDetails> list = contact;
                         list.stream().forEach(x -> contactList.add(x));
                     }
-                    List<ContactDetails> sortedList = contactList.stream().sorted(Comparator.comparing(ContactDetails::getFirstName)).collect(Collectors.toList());
-                    System.out.println(sortedList);
+                    List<ContactDetails> collect = contactList.stream().sorted(Comparator.comparing(ContactDetails::getFirstName)).collect(Collectors.toList());
+                    System.out.println(collect);
                     break;
                 case 7:
                     List<ContactDetails> stateCityZipList = new ArrayList<>();
@@ -143,11 +144,38 @@ public class AddressBooks {
             option = input.nextInt();
         }
     }
+    public  void write(Map<String,List> map) {
 
-    public static void main(String[] args) {
+        File file = new File("C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\AddressBooks.txt");
+        BufferedWriter write=null;
+        try {
+            write = new BufferedWriter(new FileWriter(file));
+            for (Map.Entry<String,List> entry : map.entrySet()){
+                write.write(entry.getKey()+" : "+entry.getValue());
+                write.newLine();
+            }
+            write.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public  void read() throws IOException {
+        File file = new File("C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\AddressBooks.txt");
+        BufferedReader read = new BufferedReader(new FileReader(file));
+        String word;
+        while ((word=read.readLine())!=null){
+            System.out.println(word);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
         AddressBooks books = new AddressBooks();
         books.addressBooksAdd();
         books.searchAddressBooksDetails();
+        System.out.println("Writing the Address books values");
+        books.write(books.books);
+        System.out.println("Read the Address books values");
+        books.read();
     }
 
 

@@ -7,7 +7,7 @@ import java.util.Scanner;
 /**
  * @author Govardhan Reddy
  */
-public class AddressBook implements AddressBookInterface {
+public class AddressBook{
     /**
      * ability to manage the contact details
      */
@@ -16,7 +16,7 @@ public class AddressBook implements AddressBookInterface {
     RegularExpression regex = new RegularExpression();
     List<ContactDetails> listOfContacts = new ArrayList<>();
 
-    @Override
+
     public void addContactDetails() {
         /**
          * add user details to particular address book
@@ -49,7 +49,7 @@ public class AddressBook implements AddressBookInterface {
         }
     }
 
-    @Override
+
     public void printContactDetails() {
         /**
          * this method is used to print all user details of particular address book
@@ -59,7 +59,7 @@ public class AddressBook implements AddressBookInterface {
         }
     }
 
-    @Override
+
     public void editContactDetails() {
         /**
          * this method is used to edit particular user detail use their first name
@@ -82,7 +82,7 @@ public class AddressBook implements AddressBookInterface {
         }
     }
 
-    @Override
+
     public void deleteContactDetails() {
         /**
          * this method is used to delete particular user detail use their first name
