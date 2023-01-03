@@ -145,22 +145,18 @@ public class AddressBooks {
         }
     }
 
-    public void write(Map<String, List> map, String path) {
+    public void write(Map<String, List> map, String path) throws IOException {
         /**
          * This method used to write data in given file
          */
         File file = new File(path);
         BufferedWriter write = null;
-        try {
-            write = new BufferedWriter(new FileWriter(file));
-            for (Map.Entry<String, List> entry : map.entrySet()) {
-                write.write(entry.getKey() + " : " + entry.getValue());
-                write.newLine();
-            }
-            write.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
+        write = new BufferedWriter(new FileWriter(file));
+        for (Map.Entry<String, List> entry : map.entrySet()) {
+            write.write(entry.getKey() + " : " + entry.getValue());
+            write.newLine();
         }
+        write.close();
     }
 
     public void read(String path) throws IOException {
@@ -193,6 +189,13 @@ public class AddressBooks {
         System.out.println("Writing the Address books values in .csv file");
         books.write(books.books, csvPath);
         books.read(csvPath);
+        /**
+         * Read and write operations on .json file
+         */
+        String jsonPath = "C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\com\\bridgelabz\\readFiles\\BooksJSON.json";
+        System.out.println("Writing the Address books values in .csv file");
+        books.write(books.books, jsonPath);
+        books.read(jsonPath);
     }
 
 
