@@ -56,7 +56,6 @@ public class ContactDetails {
     public void setZip(String zip) {
         this.zip = zip;
     }
-
     public String getPhoneNumber() {
         return phoneNumber;
     }
