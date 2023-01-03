@@ -144,14 +144,17 @@ public class AddressBooks {
             option = input.nextInt();
         }
     }
-    public  void write(Map<String,List> map) {
 
-        File file = new File("C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\AddressBooks.txt");
-        BufferedWriter write=null;
+    public void write(Map<String, List> map, String path) {
+        /**
+         * This method used to write data in given file
+         */
+        File file = new File(path);
+        BufferedWriter write = null;
         try {
             write = new BufferedWriter(new FileWriter(file));
-            for (Map.Entry<String,List> entry : map.entrySet()){
-                write.write(entry.getKey()+" : "+entry.getValue());
+            for (Map.Entry<String, List> entry : map.entrySet()) {
+                write.write(entry.getKey() + " : " + entry.getValue());
                 write.newLine();
             }
             write.flush();
@@ -159,11 +162,15 @@ public class AddressBooks {
             e.printStackTrace();
         }
     }
-    public  void read() throws IOException {
-        File file = new File("C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\AddressBooks.txt");
+
+    public void read(String path) throws IOException {
+        /**
+         * This method used to print data in given file
+         */
+        File file = new File(path);
         BufferedReader read = new BufferedReader(new FileReader(file));
         String word;
-        while ((word=read.readLine())!=null){
+        while ((word = read.readLine()) != null) {
             System.out.println(word);
         }
     }
@@ -172,10 +179,20 @@ public class AddressBooks {
         AddressBooks books = new AddressBooks();
         books.addressBooksAdd();
         books.searchAddressBooksDetails();
-        System.out.println("Writing the Address books values");
-        books.write(books.books);
-        System.out.println("Read the Address books values");
-        books.read();
+        /**
+         * Read and write operations on .txt file
+         */
+        String TextPath = "C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\BooksTEXT.txt";
+        System.out.println("Writing the Address books values in .txt file");
+        books.write(books.books, TextPath);
+        books.read(TextPath);
+        /**
+         * Read and write operations on .csv file
+         */
+        String csvPath = "C:\\Users\\govar\\OneDrive\\Desktop\\BridgeLabz Daily Assignments\\RFP229_AddressBook\\src\\BooksCSV.csv";
+        System.out.println("Writing the Address books values in .csv file");
+        books.write(books.books, csvPath);
+        books.read(csvPath);
     }
 
 
